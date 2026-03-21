@@ -31,6 +31,8 @@ def contains_duplicates_II(nums, k):
         seen[current_num] = i
     return False
 
+"""
 nums = [1,2,3,1,2,3]
 k = 2
 print(contains_duplicates_II(nums, k))
+"""
