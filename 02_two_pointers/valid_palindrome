@@ -1,0 +1,40 @@
+"""
+A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters (spaces, commas, etc.), it reads the same forward and backward.
+Given a string s, return True if it is a palindrome, or False otherwise.
+
+Examples:
+
+    s = "racecar" -> True
+
+    s = "A man, a plan, a canal: Panama" -> True (Notice how we ignore the spaces and punctuation).
+
+    s = "race a car" -> False
+"""
+
+def is_palindrome_normal(s):
+    left = 0
+    right = len(s) -1
+
+    while left < right:
+        if s[left] != s[right]:
+            return False
+        left += 1
+        right -= 1
+    return True
+
+def is_palindrome_special(s):
+    left = 0
+    right = len(s) - 1
+
+    while left < right:
+        while left < right and not s[left].isalnum():
+            left += 1
+        while left < right and not s[right].isalnum():
+            right -= 1
+        
+        if s[left].lower() != s[right].lower:
+            return False
+        
+        left += 1
+        right -= 1
+    return True
