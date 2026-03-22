@@ -33,3 +33,45 @@ strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
 result = group_anagrams(strs)
 print(result)
 """
+
+"""
+Given an array of strings strs, group the together. You can return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+Explanation:
+
+    There is no string in strs that can be rearranged to form "bat".
+    The strings "nat" and "tan" are anagrams as they can be rearranged to form each other.
+    The strings "ate", "eat", and "tea" are anagrams as they can be rearranged to form each other.
+
+Example 2:
+
+Input: strs = [""]
+
+Output: [[""]]
+
+Example 3:
+
+Input: strs = ["a"]
+
+Output: [["a"]]
+
+
+from collections import defaultdict
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        hash_map = defaultdict(list)
+
+        for word in strs:
+            sorted_word = "".join(sorted(word))
+            hash_map[sorted_word].append(word)
+        return list(hash_map.values())
+
+"""
